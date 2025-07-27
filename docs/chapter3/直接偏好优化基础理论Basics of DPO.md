@@ -1,7 +1,6 @@
 # 直接偏好优化基础理论(Basics of DPO)
 
 
-
 在本课程中，你将学习直接偏好优化的基本概念，包括方法、常见用例以及在直接偏好优化中高质量数据整理的原则。
 
 通常，直接偏好优化可以被视为一种从正面和负面回复中进行对比学习的方法。所以，和监督微调一样，我们可以从任何大语言模型开始（通常建议使用指令微调大语言模型，这种模型已经可以回答用户的一些基本问题。比如用户问：“你是谁？”，模型回答说：“我是Llama”。在这种情况下，我们希望通过整理标注员准备的一些对比数据来改变模型身份。（这样的标注员可以是人工标注员，甚至也可以是一些基于模型的标注员，他们为我们整理数据集。）
@@ -15,7 +14,7 @@
 让我们更深入地研究损失函数以及直接偏好优化（DPO）究竟在做什么。DPO旨在最小化对比损失，该损失对负面回复进行惩罚，并鼓励正面回复。DPO损失实际上是对重新参数化奖励模型的奖励差异的交叉熵损失，我们将在此深入探讨。
 
 $$
-\mathcal{L}_{\text{DPO}} = -\log \sigma \left( \beta \left( \log \frac{\pi_\theta(y_{\text{pos}} \mid x)}{\pi_{\text{ref}}(y_{\text{pos}} \mid x)} - \log \frac{\pi_\theta(y_{\text{neg}} \mid x)}{\pi_{\text{ref}}(y_{\text{neg}} \mid x)} \right) \right)
+\mathcal{L}\_{\text{DPO}} = -\log \sigma \left( \beta \left( \log \frac{\pi_\theta(y_{\text{pos}} \mid x)}{\pi_{\text{ref}}(y_{\text{pos}} \mid x)} - \log \frac{\pi_\theta(y_{\text{neg}} \mid x)}{\pi_{\text{ref}}(y_{\text{neg}} \mid x)} \right) \right)
 $$
 
 让我们来看看这个DPO损失，它是某个对数差值的sigmoid函数的负对数，其中 $$\sigma$$ 实际上就是sigmoid函数，而 $$\beta$$ 是一个非常重要的超参数，我们可以在DPO的训练过程中对其进行调整。 $$\beta$$ 值越高，这个对数差值就越重要。在这个大括号内，我们有两个对数差值，分别关注正样本和负样本，我们先看上面的部分。
