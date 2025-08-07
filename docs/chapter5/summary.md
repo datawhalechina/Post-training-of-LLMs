@@ -20,10 +20,10 @@
 
   模型生成多组回答(R1,R2,R3)→获取奖励信号→在模型**原生能力空间**内调整权重→ 保持模型生成分布稳定性
 
-  ![1754369363517](image/deepseek_markdown_20250804_b77dbb/1754369363517.png)
+  ![](/workspaces/Post-training-of-LLMs/docs/images/summary1.png)
 - **监督微调（SFT）**：
 
-  ![1754369581602](image/deepseek_markdown_20250804_b77dbb/1754369581602.png)
+  ![](/workspaces/Post-training-of-LLMs/docs/images/summary2.png)
 - 要求模仿的示例答案可能与模型*自然生成分布**存在根本差异→ 强制模型偏离原始能力空间→权重发生非必要改变
 
 ---

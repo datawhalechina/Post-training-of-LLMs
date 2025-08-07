@@ -8,18 +8,19 @@
 
 ## 目录
 *这里写你的项目目录，已完成的部分用添加上跳转链接*
-- [第1章](https://github.com/datawhalechina/repo-template/blob/main/docs/chapter1/chapter1.md)
-- [第2章](https://github.com/datawhalechina/repo-template/blob/main/docs/chapter2)
-  - [2.1 我是2.1的标题](https://github.com/datawhalechina/repo-template/blob/main/docs/chapter2/chapter2_1.md)
-  - [2.2 我是2.2的标题](https://github.com/datawhalechina/repo-template/blob/main/docs/chapter2/chapter2_2.md)
-- [第3章](https://github.com/datawhalechina/repo-template/blob/main/docs/chapter3)
-  - [3.1 我是3.1的标题](https://github.com/datawhalechina/repo-template/blob/main/docs/chapter3/chapter3_1)
-    - [3.1.1 我是3.1.1的标题](https://github.com/datawhalechina/repo-template/blob/main/docs/chapter3/chapter3_1/chapter3_1_1.md)
-    - [3.1.2 我是3.1.2的标题](https://github.com/datawhalechina/repo-template/blob/main/docs/chapter3/chapter3_1/chapter3_1_2.md)
-  - 3.2 我是3.2的标题
-- 第4章
-  - 4.1 我是4.1的标题
-  - 4.2 我是4.2的标题
+- [第1章](https://github.com/datawhalechina/Post-training-of-LLMs/blob/db3d8b98acc47b542ac4ddabbbe633124be24ca3/docs/chapter1/chapter1.md)
+  -[1.1 课程介绍]()
+  -[1.2 后训练技术介绍]()
+- [第2章](https://github.com/datawhalechina/Post-training-of-LLMs/blob/db3d8b98acc47b542ac4ddabbbe633124be24ca3/docs/chapter2)
+  - [2.1 监督微调基础理论](https://github.com/datawhalechina/repo-template/blob/main/docs/chapter2/chapter2_1.md)
+  - [2.2 监督微调实践](https://github.com/datawhalechina/repo-template/blob/main/docs/chapter2/chapter2_2.md)
+- [第3章](https://github.com/datawhalechina/Post-training-of-LLMs/blob/db3d8b98acc47b542ac4ddabbbe633124be24ca3/docs/chapter3)
+  - [3.1 直接偏好优化基础理论](https://github.com/datawhalechina/repo-template/blob/main/docs/chapter3/chapter3_1)
+  - [3.2 直接偏好优化实践]()
+- [第4章](在线强化学习实践)
+  - [4.1 在线强化学习基础理论]()
+  - [4.2 在线强化学习实践]()
+- [第5章]()
 
 ## 贡献者名单
 
