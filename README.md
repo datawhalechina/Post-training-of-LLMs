@@ -1,91 +1,85 @@
-#  Post Training of LLM
-&emsp;&emsp;本项目是一个围绕 **DeepLearning.AI** 出品的 *Post-Training for LLMs* 系列课程，为国内学习者量身打造的中文翻译与知识整理教程。项目提供课程内容翻译、知识点梳理和示例代码等内容，旨在降低语言门槛，让更多学生、研究人员和开发者系统掌握大语言模型（LLM）后训练阶段的核心技术与实践方法。
+### **项目简介**
+本项目是一个围绕 DeepLearning.AI 出品的 Post-Training for LLMs 系列课程，为国内学习者量身打造的中文翻译与知识整理教程。项目提供课程内容翻译、知识点梳理和示例代码等内容，旨在降低语言门槛，让更多学生、研究人员和开发者系统掌握大语言模型（LLM）后训练阶段的核心技术与实践方法。
 
-&emsp;&emsp;本项目的主要内容包括：
+### **立项理由**
+项目的核心目标是帮助国内学习者系统学习国际前沿的 LLM 后训练技术，缩小信息差距，并推动 LLM 技术在更多实际场景中落地应用。当前 LLM 技术快速发展，但高质量的中文学习资料仍较少，尤其是在 后训练阶段 的系统化内容方面。本项目旨在将 DeepLearning.AI 的高质量课程引入中文世界，让更多开发者与学生能直接接触到国际一线的 LLM 后训练知识，并在自己的项目中加以实践。
 
-1. **课程内容翻译**：精准翻译课程讲解内容，确保技术细节准确传达；
-2. **知识结构化整理**：梳理并总结 LLM 后训练核心概念，如 SFT、DPO、OnlineRL 等；
-3. **配套示例与代码**：为关键知识点补充可运行的 Python 代码；
-
-
-&emsp;&emsp;**项目的核心目标** 是帮助国内学习者系统学习国际前沿的 LLM 后训练技术，缩小信息差距，并推动 LLM 技术在更多实际场景中落地应用。任何人都可以提出 Issue 或提交 PR，共同完善和维护这个项目。
-
----
-
-## 项目意义
-
-> 什么是 LLM Post-Training？
->
-> **Post-Training** 是指在预训练之后对大语言模型进行进一步优化与对齐的过程，包括监督微调（SFT）、直接偏好优化（DPO）等。这些技术可以让模型更符合人类价值观、任务需求和使用场景。
-
-&emsp;&emsp;当前 LLM 技术快速发展，但高质量的中文学习资料仍较少，尤其是在 **后训练阶段** 的系统化内容方面。本项目旨在将 DeepLearning.AI 的高质量课程引入中文世界，让更多开发者与学生能直接接触到国际一线的 LLM 后训练知识，并在自己的项目中加以实践。
-
----
-
-## 项目受众
-
-本项目适合以下学习者：
-
+### **项目受众**
 - 对 LLM 优化与应用感兴趣。
 - 希望深入理解并掌握模型后训练方法的。
 - 希望结合后训练技术打造领域专用模型的 。
 - 以及最广大、最普通的学生群体
 
-## 他们能获得的收获
+### **项目亮点**
+1、权威课程，本土化翻译
+精准翻译DeepLearning.AI官方前沿课程，打破语言壁垒，为国内学习者提供原汁原味且易于理解的LLM后训练核心知识。
+2、系统梳理后训练核心技术
+聚焦SFT、DPO、OnlineRL等关键环节，将碎片知识系统化，帮助学习者构建从理论到实践的完整知识体系。
+3、理论与实践并重
+提供配套可运行的代码示例，强化动手能力，确保学习者不仅能“看懂”，更能“上手”，为开发领域专用模型打下基础。
 
-- 系统化掌握 LLM 后训练方法与流程。
-- 通过示例代码快速上手实践。
-- 为微调、对齐、RAG 等下游任务打下坚实基础。
-- 为构建领域专有模型提供帮助。
-
-
-## 学习建议
-
-1. **先掌握基础概念** —— 先理解 SFT、DPO等核心算法原理；
-2. **再结合示例实践** —— 跟随项目中的代码样例动手实验；
-3. **最后应用到项目中** —— 将所学方法应用于自己的模型优化任务。
-
-
-## 目录
-*这里写你的项目目录，已完成的部分用添加上跳转链接*
+### **项目规划**
+#### 1、目录
 - [第1章](https://github.com/datawhalechina/Post-training-of-LLMs/blob/364baeddafbbf1fb94f08c432c1ec5e233c7d112/docs/chapter1)
-  - [1.1 课程介绍]()
-  - [1.2 后训练技术介绍]()
+    - [1.1 课程介绍](https://github.com/datawhalechina/Post-training-of-LLMs/blob/be674beded58fd9b538ccd8e134d39fa64dee746)
+    - [1.2 后训练技术介绍](https://github.com/datawhalechina/Post-training-of-LLMs/blob/be674beded58fd9b538ccd8e134d39fa64dee746)
 - [第2章](https://github.com/datawhalechina/Post-training-of-LLMs/blob/db3d8b98acc47b542ac4ddabbbe633124be24ca3/docs/chapter2)
-  - [2.1 监督微调基础理论](https://github.com/datawhalechina/Post-training-of-LLMs/blob/364baeddafbbf1fb94f08c432c1ec5e233c7d112/docs/chapter2/chapter2_1)
-  - [2.2 监督微调实践](https://github.com/datawhalechina/Post-training-of-LLMs/blob/364baeddafbbf1fb94f08c432c1ec5e233c7d112/docs/chapter2/chapter2_2)
+    - [2.1 监督微调基础理论](https://github.com/datawhalechina/Post-training-of-LLMs/blob/364baeddafbbf1fb94f08c432c1ec5e233c7d112/docs/chapter2/chapter2_1)
+    - [2.2 监督微调实践](https://github.com/datawhalechina/Post-training-of-LLMs/blob/364baeddafbbf1fb94f08c432c1ec5e233c7d112/docs/chapter2/chapter2_2)
 - [第3章](https://github.com/datawhalechina/Post-training-of-LLMs/blob/db3d8b98acc47b542ac4ddabbbe633124be24ca3/docs/chapter3)
-  - [3.1 直接偏好优化基础理论](https://github.com/datawhalechina/Post-training-of-LLMs/blob/dc4f411b5e1a0edf92289269b682c3ab421a0a2b/docs/chapter3/chapter3_1)
-  - [3.2 直接偏好优化实践](https://github.com/datawhalechina/Post-training-of-LLMs/blob/364baeddafbbf1fb94f08c432c1ec5e233c7d112/docs/chapter3/chapter3_2)
+    - [3.1 直接偏好优化基础理论](https://github.com/datawhalechina/Post-training-of-LLMs/blob/dc4f411b5e1a0edf92289269b682c3ab421a0a2b/docs/chapter3/chapter3_1)
+    - [3.2 直接偏好优化实践](https://github.com/datawhalechina/Post-training-of-LLMs/blob/364baeddafbbf1fb94f08c432c1ec5e233c7d112/docs/chapter3/chapter3_2)
 - [第4章](https://github.com/datawhalechina/Post-training-of-LLMs/blob/364baeddafbbf1fb94f08c432c1ec5e233c7d112/docs/chapter4)
-  - [4.1 在线强化学习基础理论]()
-  - [4.2 在线强化学习实践](https://github.com/datawhalechina/Post-training-of-LLMs/blob/be674beded58fd9b538ccd8e134d39fa64dee746/docs/chapter4/chapter4_2)
-- [第5章](https://github.com/datawhalechina/Post-training-of-LLMs/blob/364baeddafbbf1fb94f08c432c1ec5e233c7d112/docs/chapter5)
+    - [4.1 在线强化学习基础理论](https://github.com/datawhalechina/Post-training-of-LLMs/blob/be674beded58fd9b538ccd8e134d39fa64dee746)
+    - [4.2 在线强化学习实践](https://github.com/datawhalechina/Post-training-of-LLMs/blob/be674beded58fd9b538ccd8e134d39fa64dee746)
+- [第5章]
+#### 2、各章节负责人以及预估完成时间
 
-## 贡献者名单
+| 章节             | 负责人     | 预估完成时间 |
+| -------------- | ------- | ------ |
+| 1.1 课程介绍       | 李柯辰     | 10.7   |
+| 1.2 后训练技术介绍    | 李柯辰     | 10.7   |
+| 2.1 监督微调基础理论   | 朱广恩     | 10.7   |
+| 2.2 监督微调实践     | 王泽宇     | 10.7   |
+| 3.1 直接偏好优化基础理论 | 王海洪     | 10.7   |
+| 3.2 直接偏好优化实践   | 张宏历     | 10.7   |
+| 4.1 在线强化学习基础理论 | 朱伯湘     | 10.7   |
+| 4.2 在线强化学习实践   | 蔡煊琪，朱伯湘 | 10.7   |
+| 5.1 总结         | 张宏历     | 10.7   |
+#### 3、可预见的困难
 
-| 姓名 | 职责 | 简介 |
-| :----| :---- | :---- |
-| 小明 | 项目负责人 | 一个理想主义者 |
-| 小红 | 第1章贡献者 | 小明的朋友 |
-| 小强 | 第2章贡献者 | 小明的朋友 |
+- **技术理解与翻译准确性的平衡**
+LLM后训练领域涉及大量前沿、晦涩的专业术语（如DPO、OnlineRL等）。在翻译和解释时，如何在保持原意准确的前提下，使其在中文语境中易于理解，是一大挑战。理解偏差或翻译生硬都会影响学习效果。
+- **代码实践与环境的复现难题**
+示例代码的成功运行严重依赖于特定的软件库版本、硬件环境（如GPU）和数据集。环境配置的微小差异都可能导致代码报错，极大增加学习者的实践门槛和挫败感。
+- **课程迭代与更新压力**
+ LLM领域技术迭代速度极快，原版课程内容可能会更新，新的算法和工具也会不断涌现。项目面临着需要持续跟进、同步更新翻译与代码的巨大压力，否则内容将迅速过时。
 
-*注：表头可自定义，但必须在名单中标明项目负责人*
 
-## 参与贡献
 
-- 如果你发现了一些问题，可以提Issue进行反馈，如果提完没有人回复你可以联系[保姆团队](https://github.com/datawhalechina/DOPMC/blob/main/OP.md)的同学进行反馈跟进~
-- 如果你想参与贡献本项目，可以提Pull request，如果提完没有人回复你可以联系[保姆团队](https://github.com/datawhalechina/DOPMC/blob/main/OP.md)的同学进行反馈跟进~
-- 如果你对 Datawhale 很感兴趣并想要发起一个新的项目，请按照[Datawhale开源项目指南](https://github.com/datawhalechina/DOPMC/blob/main/GUIDE.md)进行操作即可~
+### **已完成的部分**
 
-## 关注我们
+| 章节             | 负责人     | 预估完成时间 | 状态  |
+| -------------- | ------- | ------ | --- |
+| 1.1 课程介绍       | 李柯辰     | 10.7   | 🚧  |
+| 1.2 后训练技术介绍    | 李柯辰     | 10.7   | 🚧  |
+| 2.1 监督微调基础理论   | 朱广恩     | 10.7   | ✅   |
+| 2.2 监督微调实践     | 王泽宇     | 10.7   | 🚧  |
+| 3.1 直接偏好优化基础理论 | 王海洪     | 10.7   | ✅   |
+| 3.2 直接偏好优化实践   | 张宏历     | 10.7   | ✅   |
+| 4.1 在线强化学习基础理论 | 朱伯湘     | 10.7   | 🚧  |
+| 4.2 在线强化学习实践   | 蔡煊琪，朱伯湘 | 10.7   | 🚧  |
+| 5.1 总结         | 张宏历     | 10.7   | ✅   |
+
+
+### 关注我们
 
 <div align=center>
 <p>扫描下方二维码关注公众号：Datawhale</p>
 <img src="https://raw.githubusercontent.com/datawhalechina/pumpkin-book/master/res/qrcode.jpeg" width = "180" height = "180">
 </div>
 
-## LICENSE
+### LICENSE
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-lightgrey" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
 
