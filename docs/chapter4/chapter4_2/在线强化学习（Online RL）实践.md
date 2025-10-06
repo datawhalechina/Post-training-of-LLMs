@@ -1,16 +1,45 @@
+# GRPO - Online RL 实践
 针对分组相对策略优化（GRPO）——一种主流的在线强化学习方法。
 
 如你所忆，在线强化学习旨在让模型**自主探索更优回复**。
 
-在本实验中，我们将首先**策划一组数学题目，**（如下图）
+在本实验中，我们将首先**策划一组数学题目，**（GSM8K数据集，下图）将其输入当前语言模型，并让模型**生成多条回复；**随后设计一个**可验证奖励函数**，用于**检验回复是否与标准答案一致**；由此获得〈提示，回复，奖励〉三元组，并利用 **GRPO** 更新语言模型。接下来让我们在代码中完整体验。
 
-将其输入当前语言模型，并让模型**生成多条回复；**随后设计一个**可验证奖励函数**，用于**检验回复是否与标准答案一致**；由此获得〈提示，回复，奖励〉三元组，并利用 **GRPO** 更新语言模型。接下来让我们在代码中完整体验。
+![GSM8K数据集.png](GSM8K数据集.png)
 
-![](https://acnbuua5qccg.feishu.cn/space/api/box/stream/download/asynccode/?code=ZGVjNjYyNjEzZGRhZDM5YWJkZTJjMDhjNTYzMjVlMjdfWjhTcEFCNTNDbE5BcHVuV01WQ00wUWNCQ2tMREYxY3RfVG9rZW46WGdQRGJVMUhob2Q0Q2x4Y2hueWNGNGxFbnRmXzE3NTk2NjI5NTY6MTc1OTY2NjU1Nl9WNA)
+
+
+## 目录与文件说明
+
+- **在线强化学习（Online RL）实践.md**：本文件，讲解 GRPO 在线强化学习实践流程与代码片段。
+- **Lesson_7.ipynb**：与本文配套的可运行 Notebook，按单元格逐步复现实验流程。
+- **helper.py**：实验用工具函数集合，供本文与 Notebook 直接引用，包含：
+  - `generate_responses(model, tokenizer, ...)`：使用分词器的 chat template 组织对话并生成模型回复；支持传入完整 `messages`。
+  - `test_model_with_questions(model, tokenizer, questions, ...)`：批量测试若干题目，打印输入与输出，便于快速检查模型行为。
+  - `load_model_and_tokenizer(model_name, use_gpu=False)`：加载 Causal LM 与分词器，必要时补充 `chat_template` 与 `pad_token`，并根据是否使用 GPU 将模型放置到对应设备。
+  - `display_dataset(dataset)`：将含 `messages` 结构的数据集的前若干条以表格形式展示，便于快速浏览样例。
+- **requirements.txt**：实验依赖列表。建议在该目录下执行：
+
+
+
+快速开始：
+
+1. 在当前目录安装依赖（见上）。
+2. 准备可用的模型权重路径，或直接使用 HuggingFace 模型名称（如文中示例）。
+3. 选择使用 `Lesson_7.ipynb` 逐步运行，或在 Python 环境中复用本文代码片段并从 `helper.py` 导入函数。
+
 
   
 
-与往常一样，第一步是导入所需库。
+
+与往常一样，第一步是安装库函数并导入所需库。
+
+安装库函数
+```
+pip install -r requirements.txt
+```
+
+导入所需库
 
 ```
 import torch
@@ -23,7 +52,7 @@ import pandas as pd
 from tqdm import tqdm
 ```
 
-此处与 DPO/SFT 类似，区别在于我们使用 _TRL 库中的 GRPOTrainer 与 GRPOConfig_来配置 GRPO 训练环境.
+此处与 DPO/SFT 类似，区别在于我们使用 HuggingFace 的 TRL 库中的 GRPOTrainer 与 GRPOConfig_来配置 GRPO 训练环境.
 
 不同于前两节仅用少量示例提示测试，对于数学的评估数据集，本节将_使用 GSM8K 数学评测集_。首先设置 `use_gpu=False`；若在本机 GPU 上运行，可改为 `True`。还需设定系统提示（persistent prompt）：
 
@@ -60,7 +89,7 @@ def reward_func(completions, ground_truth, **kwargs):
 3. 若无匹配，则置输出为空。
     
 
-随后_直接比对_提取结果与标准答案：
+随后直接比对提取结果与标准答案，这是一种二元的奖励函数：
 
 - 一致 → 奖励 = 1
     
@@ -85,10 +114,10 @@ ground_truth = ["72"]
 reward = reward_func(sample_pred, ground_truth)
 print(f"Negative Sample Reward: {reward}")
 ```
----
-### 加载评估数据集
 
-从 **OpenAI GSM8K** 加载 **测试集**（test split）为加速演示，仅取**前 5000 条样本**，并将 `test_size` 设为 5。
+## 加载评估数据集
+
+从 **OpenAI GSM8K** 加载 **测试集**（test split）为加速演示，仅取**前 5 条样本**，并将 `test_size` 设为 5。该数据集总计包括1319条数据。
 
 数据集包含：
 
@@ -106,9 +135,31 @@ sample_df = eval_dataset.to_pandas()
 display(sample_df)
 ```
 
+如果我们需要进行随机样本的选取，可以使用一下代码：
+```
+# Random select 20 example as the evaluate dataset
+
+# Define the number of examples to randomly select
+num_examples_to_select = 20
+
+# Load the full test dataset
+full_test_dataset = load_dataset("openai/gsm8k", "main")["test"]
+
+# Randomly select 20 examples
+# You can use the 'shuffle' method and then 'select' the first N examples
+eval_dataset = full_test_dataset.shuffle(seed=42).select(range(num_examples_to_select)) # Using a seed for reproducibility
+
+# Convert the selected dataset to a Pandas DataFrame for display or further use
+eval_df = eval_dataset_random_20.to_pandas()
+
+# Display the head of the DataFrame to see the selected examples
+print(f"Randomly selected {num_examples_to_select} examples for evaluation:")
+display(eval_df)
+```
+
 ---
 
-### 数据后处理
+## 数据后处理
 
 定义后处理函数：
 
@@ -138,7 +189,7 @@ display(sample_df)
 ```
 ---
 
-### 模型加载与初次评估
+## 模型加载与初次评估
 
 加载 **Qwen2.5-0.5B-Instruct** 模型，
 ```
@@ -179,7 +230,7 @@ del model, tokenizer
 
 ---
 
-### 评估结果（5 条示例）
+## 评估结果（5 条示例）
 
 - 第 1 条：无 `\boxed{}` → 不匹配
     
@@ -203,7 +254,7 @@ del model, tokenizer
 
 ---
 
-### 训练阶段
+## 训练阶段
 
 完成评估后，进入训练流程：
 
@@ -224,7 +275,7 @@ print(train_dataset[0])
 ```
 ---
 
-### 配置 GRPO 训练
+## 配置 GRPO 训练
 
 设置 **GRPOConfig** 超参数：
 
@@ -251,11 +302,11 @@ config = GRPOConfig(
 
 ---
 
-### 启动训练
+## 启动训练
 
 由于 0.5B 模型在 CPU 上训练极慢，
 
-使用更小的 HuggingFace 模型加速演示。
+使用更小的 SmolLM2-135M-Instruct 模型加速演示。
 
 将 **模型、配置、奖励函数、训练集** 传入 `GRPOTrainer` 并启动训练。
 
@@ -276,18 +327,18 @@ grpo_trainer.train()
 ```
 ---
 
-### 训练完成与现象
+## 训练完成与现象
 
 训练 loss 始终为 0：
 
 - 小模型几乎无法答对 → 相对奖励全为 0。
     
 
-若换用 **Qwen2.5B** 等更大模型，将观察到有意义的 loss 与提升。
+若换用 **Qwen2.5B** 等更大模型，将观察到有意义的 loss 与提升。如果想使用已经微调好的 Qwen2.5B 模型，可以在 [Hugging Face - banghua](https://huggingface.co/banghua) 下载
 
 ---
 
-### 全量训练模型评估
+## 全量训练模型评估
 
 加载此前用 **GPU + 更大资源 + 微调配置** 训练的 Qwen 模型：
 
@@ -308,7 +359,7 @@ grpo_trainer.train()
 
 ---
 
-### 结论与建议
+## 结论与建议
 
   
 
@@ -351,9 +402,15 @@ accuracy = sum(rewards) / len(rewards)
 print(f"Evaluation Accuracy: {accuracy:.2%}")
 ```
 
----
+## 实验探索与思考
+1. 本实验所用的reward function是二元奖励函数（即答案对了就是1分，答案错了就是0分），我们是否能够优化中间步骤的计算，融合CoT，帮助模型进行中间运算步骤的准确性。
+2. 在本实验过程中，我们使用前5个数据进行eval： 模型的正确率从20%提升到到40%，就是从答对1个，到答对2个。这是否是属于偶然误差？
+   > 我们在这里随机选取20个test集里面的数据（`shuffle(seed=42)`）：模型的正确从55%降低到50%。这个好像微调后似乎还起了少许副作用。
+3. 我们发现有些output_token似乎太小，有几题模型都还没有到最后一步输出，中间就被截断了。
+    > 我们在`helper.py`中默认最大输出的token数是300，如果想扩大token数，可以在`Lesson_7.ipynb`文件中将 `generate_responses`函数加入`max_new_tokens`参数，并进行修改，例如变成1000。
 
-### 本节总结
+
+## 本节总结
 
 本节课完整展示了：
 
