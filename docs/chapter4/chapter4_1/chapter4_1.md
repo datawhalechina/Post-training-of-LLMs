@@ -5,7 +5,6 @@
 * 常见应用场景
 * 高质量数据策划的原则
 
----
 
 ## 4.1.1 语言模型中的强化学习：在线 vs 离线
 
@@ -28,7 +27,6 @@
 
 > 因此，当我们提到 “在线强化学习（Online RL）”时，通常指的是 **在在线学习场景中应用的强化学习方法**。
 
----
 
 ## 4.1.2 在线强化学习的工作机制
 
@@ -38,9 +36,9 @@
 1. 准备一批 Prompt（输入提示）；
 2. 将这些 Prompt 输入语言模型；
 3. 模型生成对应的 Response；
-4. 将 `(prompt, response)` 对送入 **奖励函数（Reward Function）**；
-5. 奖励函数为每对 `(prompt, response)` 打分；
-6. 获得 `(prompt, response, reward)` 三元组；
+4. 将 (prompt, response) 对送入 **奖励函数（Reward Function）**；
+5. 奖励函数为每对 (prompt, response) 打分；
+6. 获得 (prompt, response, reward) 三元组；
 7. 使用这些数据来更新语言模型。
 
 模型更新可采用不同方法，本课重点介绍两种：
@@ -48,7 +46,7 @@
 * **PPO（Proximal Policy Optimization）**
 * **GRPO（Group Relative Policy Optimization）**
 
----
+
 
 ## 4.1.3 奖励函数（Reward Function）的选择
 
@@ -90,7 +88,7 @@ $$
 * 准备成本较高，但奖励信号更精确可靠；
 * 更适合训练**推理类模型**（Reasoning Models），如代码、数学领域。
 
----
+
 
 ## 4.1.4 两种主流的在线强化学习算法对比
 
@@ -124,7 +122,7 @@ $$\mathcal{J}_{PPO}(\theta) = \mathbb{E}_{q \sim P(Q), o \sim \pi_{\theta_{\text
 * 反馈粒度更细；
 * 但需额外训练价值模型 → 占用更多 GPU 内存。
 
----
+
 
 ### GRPO（Group Relative Policy Optimization）
 
@@ -147,7 +145,7 @@ GRPO 由 DeepSeek 提出，用于优化大型语言模型的推理能力。
 * 所有 Token 在同一响应中共享相同优势值；
 * 更节省显存，但优势估计较粗糙。
 
----
+
 
 ## 4.1.5 PPO 与 GRPO 的比较总结
 
@@ -160,9 +158,9 @@ GRPO 由 DeepSeek 提出，用于优化大型语言模型的推理能力。
 | 奖励适配 | 适合连续或模型化奖励                 | 适合二元/可验证奖励                   |
 | 应用场景 | 聊天、对齐、安全优化                 | 数学、代码、推理任务                   |
 
----
 
-## 🧭 4.1.6 课程小结
+
+## 4.1.6 课程小结
 
 在本课中，你学习了：
 
