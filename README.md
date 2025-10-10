@@ -18,8 +18,8 @@
 ### **项目规划**
 #### 1、目录
 - [第1章](https://github.com/datawhalechina/Post-training-of-LLMs/blob/364baeddafbbf1fb94f08c432c1ec5e233c7d112/docs/chapter1)
-    - [1.1 课程介绍](https://github.com/datawhalechina/Post-training-of-LLMs/blob/be674beded58fd9b538ccd8e134d39fa64dee746)
-    - [1.2 后训练技术介绍](https://github.com/datawhalechina/Post-training-of-LLMs/blob/be674beded58fd9b538ccd8e134d39fa64dee746)
+    - [1.1 课程介绍](https://github.com/datawhalechina/Post-training-of-LLMs/blob/0b7e21bbcd82c887f425bd3918d68b50e483fae1/docs/chapter1/chapter1_1)
+    - [1.2 后训练技术介绍](https://github.com/datawhalechina/Post-training-of-LLMs/blob/0b7e21bbcd82c887f425bd3918d68b50e483fae1/docs/chapter1/chapter1_2)
 - [第2章](https://github.com/datawhalechina/Post-training-of-LLMs/blob/db3d8b98acc47b542ac4ddabbbe633124be24ca3/docs/chapter2)
     - [2.1 监督微调基础理论](https://github.com/datawhalechina/Post-training-of-LLMs/blob/364baeddafbbf1fb94f08c432c1ec5e233c7d112/docs/chapter2/chapter2_1)
     - [2.2 监督微调实践](https://github.com/datawhalechina/Post-training-of-LLMs/blob/364baeddafbbf1fb94f08c432c1ec5e233c7d112/docs/chapter2/chapter2_2)
@@ -27,8 +27,8 @@
     - [3.1 直接偏好优化基础理论](https://github.com/datawhalechina/Post-training-of-LLMs/blob/dc4f411b5e1a0edf92289269b682c3ab421a0a2b/docs/chapter3/chapter3_1)
     - [3.2 直接偏好优化实践](https://github.com/datawhalechina/Post-training-of-LLMs/blob/364baeddafbbf1fb94f08c432c1ec5e233c7d112/docs/chapter3/chapter3_2)
 - [第4章](https://github.com/datawhalechina/Post-training-of-LLMs/blob/364baeddafbbf1fb94f08c432c1ec5e233c7d112/docs/chapter4)
-    - [4.1 在线强化学习基础理论](https://github.com/datawhalechina/Post-training-of-LLMs/blob/be674beded58fd9b538ccd8e134d39fa64dee746)
-    - [4.2 在线强化学习实践](https://github.com/datawhalechina/Post-training-of-LLMs/blob/be674beded58fd9b538ccd8e134d39fa64dee746)
+    - [4.1 在线强化学习基础理论](https://github.com/datawhalechina/Post-training-of-LLMs/blob/0b7e21bbcd82c887f425bd3918d68b50e483fae1/docs/chapter4/chapter4_1)
+    - [4.2 在线强化学习实践](https://github.com/datawhalechina/Post-training-of-LLMs/blob/0b7e21bbcd82c887f425bd3918d68b50e483fae1/docs/chapter4/chapter4_2)
 - [第5章](https://github.com/datawhalechina/Post-training-of-LLMs/blob/de51c9077cb9ef038db5cc5e9b55520187df4447/docs/chapter5)
 #### 2、各章节负责人以及预估完成时间
 
